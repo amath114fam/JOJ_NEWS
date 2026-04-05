@@ -39,7 +39,10 @@
         <div>
             {% if user.is_authenticated %}
                 <span class="text-white me-2">👤 {{ user.username }}</span>
-                <a href="{% url 'deconnexion' %}" class="btn btn-light btn-sm">Déconnexion</a>
+                <form method="POST" action="{% url 'deconnexion' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-light btn-sm">Déconnexion</button>
+                </form>
             {% else %}
                 <a href="{% url 'connexion' %}" class="btn btn-light btn-sm">Connexion</a>
                 <a href="{% url 'inscription' %}" class="btn btn-dark btn-sm">Inscription</a>

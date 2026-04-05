@@ -78,7 +78,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'joj_db',
         'USER': 'root',
-        'PASSWORD': 'hellome13',
+        'PASSWORD': 'fam@2025',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -120,3 +120,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+LOGIN_REDIRECT_URL = 'home'
