@@ -4,6 +4,7 @@ from .forms import InscriptionForm
 from .models import Article
 from .forms import CommentaireForm
 from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 def home(request):
