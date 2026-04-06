@@ -3,12 +3,12 @@
 {% block content %}
 <div class="text-center">
     <h1 class="text-success">Bienvenue sur JOJ News 🇸🇳</h1>
-    <p class="lead">Plateforme officielle des Jeux Olympiques de la Jeunesse</p>
+    <marquee class="lead">Plateforme officielle des Jeux Olympiques de la Jeunesse</marquee>
 
     {% if user.is_authenticated %}
-        <p>👤 Connecté en tant que <strong>{{ user.username }}</strong></p>
+        <p class="loginText">👤 Connecté en tant que <strong>{{ user.username }}</strong></p>
     {% else %}
-        <p>Veuillez vous connecter pour interagir</p>
+        <p class="loginText">Veuillez vous connecter pour interagir</p>
     {% endif %}
 </div>
 {% endblock %}
