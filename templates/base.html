@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,6 +7,8 @@
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <style>
         body {
@@ -44,7 +47,7 @@
                     <button type="submit" class="btn btn-light btn-sm">Déconnexion</button>
                 </form>
             {% else %}
-                <a href="{% url 'connexion' %}" class="btn btn-light btn-sm">Connexion</a>
+                <a href="{% url 'connexion' %}" class="btn btn-light btn-sm connexion">Connexion</a>
                 <a href="{% url 'inscription' %}" class="btn btn-dark btn-sm">Inscription</a>
             {% endif %}
         </div>
@@ -56,6 +59,5 @@
     {% block content %}
     {% endblock %}
 </div>
-
 </body>
 </html>

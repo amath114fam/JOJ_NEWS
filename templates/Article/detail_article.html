@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="card bg-warning" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title"> Titre : {{details.titre}} </h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">Auteur : {{details.auteur}}</h6>
+            <p class="card-text">Contenu : {{details.contenu}}</p>
+            <span> publié le {{details.date_creation}} </span>
+            <a href="{% url "liste_article" %}" class="card-link fw-bold">Retour</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

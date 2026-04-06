@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from .forms import InscriptionForm
+from .models import Article
 # Create your views here.
 
 def home(request):
@@ -20,3 +21,16 @@ def inscription(request):
         form = InscriptionForm()
 
     return render(request, 'inscription.html', {'form': form})
+def liste_article(request):
+    article = Article.objects.all()
+    context = {
+        'articles' : article
+    }
+    return render(request, 'Article/liste_article.html', context)
+
+def detail_article(request, id):
+    detail = get_object_or_404(Article, id=id)
+    context = {
+        'details' : detail
+    }
+    return render(request, 'Article/detail_article.html', context)
