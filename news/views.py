@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
-from .forms import InscriptionForm
+from .forms import InscriptionForm, CommentaireForm
 from .models import Article
 # Create your views here.
 
@@ -29,8 +29,22 @@ def liste_article(request):
     return render(request, 'Article/liste_article.html', context)
 
 def detail_article(request, id):
-    detail = get_object_or_404(Article, id=id)
-    context = {
-        'details' : detail
-    }
-    return render(request, 'Article/detail_article.html', context)
+    article = get_object_or_404(Article, id=id)
+    commentaires = article.commentaires.all()
+    form = CommentaireForm()
+
+    if request.method == 'POST':
+        if not request.user.is_authenticated:
+            return redirect('connexion')
+        form = CommentaireForm(request.POST)
+        if form.is_valid():
+            commentaire = form.save(commit=False)
+            commentaire.auteur = request.user
+            commentaire.article = article
+            commentaire.save()
+            return redirect('detail_article', id=id)
+    return render(request, 'Article/detail_article.html', {
+    'details': article,
+    'commentaires': commentaires,
+    'form': form
+    })
