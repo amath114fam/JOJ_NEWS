@@ -2,6 +2,7 @@ from django.urls import path
 from .views import home, inscription
 from django.contrib.auth import views as auth_views
 from . import views
+from .views import LectureDetail
 
 urlpatterns = [
     path('', home, name='home'),
@@ -11,4 +12,5 @@ urlpatterns = [
     path('liste/', views.liste_article , name='liste_article'),
     path('Article/<int:id>/', views.detail_article , name='detail_article'),
     path('commentaire/', views.commentaire, name='commentaire'),
+    path('lecturetotale/<int:pk>/', LectureDetail.as_view(), name='lecture_detail_commentaire'),
 ]
