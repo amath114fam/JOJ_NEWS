@@ -1,9 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="text-center">
-    <h1 class="text-success">Bienvenue sur JOJ News 🇸🇳</h1>
-    <marquee class="lead">Plateforme officielle des Jeux Olympiques de la Jeunesse</marquee>
-    <h2><a class="lien" href="{% url "liste_article" %}">Cliquer ici pour voir les articles</a></h2>
+<div class="container">
+    <div class="text-center mb-5">
+        <h1 class="text-white Bienvenue">Bienvenue sur JOJ News 🇸🇳</h1>
+    </div>
+
+    <div class="row g-5">
+        {% for article in articles %}
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="card h-100" style="width: 100%;">
+                <img src="{{article.image.url}}" class="card-img-top imageCard" alt="{{article.image.url}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{article.titre}}</h5>
+                    <a href="{% url "detail_article" article.id %}" class="btn btn-success">Voir plus</a>
+                </div>
+            </div>
+        </div>
+       {% endfor %}
+    </div>
 </div>
 {% endblock %}

@@ -5,6 +5,7 @@
 
     <!-- Article -->
     <div class="card shadow mb-4">
+        <img src="{{details.image.url}}" class="card-img-top imageCard" alt="{{article.image.url}}">
         <div class="card-body">
             <h3 class="card-title text-primary">{{ details.titre }}</h3>
             <h6 class="text-muted">
@@ -17,7 +18,7 @@
     </div>
 
     <!-- Liste des commentaires -->
-    <h5 class="mb-3 ">💬 Commentaires ({{ commentaires.count }})</h5>
+    <h5 class="mb-3 text-white">💬 Commentaires ({{ commentaires.count }})</h5>
 
     {% if commentaires %}
         {% for commentaire in commentaires %}

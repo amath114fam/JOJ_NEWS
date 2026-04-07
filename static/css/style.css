@@ -5,9 +5,16 @@ body{
     height: 100%;
 }
 /* Couleurs Sénégal */
+
+.Bienvenue,
 .lead{
-    color: green;
+    color: #fff;
+    background: linear-gradient(90deg, #198754, #20c997);
+    padding: 12px;
+    font-size: 20px;
     font-weight: bold;
+    border-radius: 10px;
+    text-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 .loginText{
     font-weight: bold;

@@ -26,7 +26,7 @@ def liste_article(request):
     context = {
         'articles' : article
     }
-    return render(request, 'Article/liste_article.html', context)
+    return render(request, 'home.html', context)
 
 def detail_article(request, id):
     article = get_object_or_404(Article, id=id)
