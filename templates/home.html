@@ -6,7 +6,7 @@
     <marquee class="lead">Plateforme officielle des Jeux Olympiques de la Jeunesse</marquee>
 
     {% if user.is_authenticated %}
-        <p class="loginText">👤 Connecté en tant que <strong>{{ user.username }}</strong></p>
+        <p class="loginText"> Connecté en tant que <strong>{{ user.username }}</strong></p>
     {% else %}
         <p class="loginText">Veuillez vous connecter pour interagir</p>
     {% endif %}

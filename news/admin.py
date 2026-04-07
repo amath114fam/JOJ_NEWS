@@ -24,6 +24,9 @@ class ArticleAdmin(admin.ModelAdmin):
             'fields': ('date_creation',),
             'classes': ('collapse',)
         }),
+        ('image',{
+            'fields' : ('image',)
+        }),
     )
 
 @admin.register(Commentaire)
