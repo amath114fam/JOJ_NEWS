@@ -33,21 +33,26 @@
 </head>
 
 <body>
-
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
     <div class="container">
         <a class="navbar-brand" href="/">JOJ News</a>
 
-        <div>
+        <div class="d-flex align-items-center">
             {% if user.is_authenticated %}
+                <ul class="navbar-nav me-3">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'liste_article' %}">Articles</a>
+                    </li>
+                </ul>
                 <span class="text-white me-2">👤 {{ user.username }}</span>
                 <form method="POST" action="{% url 'deconnexion' %}" style="display:inline;">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-light btn-sm">Déconnexion</button>
                 </form>
             {% else %}
-                <a href="{% url 'connexion' %}" class="btn btn-light btn-sm connexion">Connexion</a>
+                <a class="nav-link text-white" href="{% url 'liste_article' %}">Articles</a>
+                <a href="{% url 'connexion' %}" class="btn btn-light btn-sm me-2">Connexion</a>
                 <a href="{% url 'inscription' %}" class="btn btn-dark btn-sm">Inscription</a>
             {% endif %}
         </div>
