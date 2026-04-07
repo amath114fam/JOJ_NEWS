@@ -1,6 +1,8 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
+from .views import CommentaireUpdateView, CommentaireDeleteView
+
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -16,4 +18,6 @@ urlpatterns = [
 
     path('liste/', views.liste_article, name='liste_article'),
     path('article/<int:id>/', views.detail_article, name='detail_article'),
+    path('commentaire/<int:pk>/modifier/', CommentaireUpdateView.as_view(), name='modifier_commentaire'),
+    path('commentaire/<int:pk>/supprimer/', CommentaireDeleteView.as_view(), name='supprimer_commentaire'),
 ]

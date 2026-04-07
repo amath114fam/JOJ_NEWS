@@ -5,6 +5,11 @@ from .models import Article
 from .models import Article, Commentaire
 from .forms import CommentaireForm
 from django.contrib.auth.decorators import login_required
+from django.views.generic import UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from .models import Commentaire
+
 # Create your views here.
 
 def home(request):
@@ -58,3 +63,31 @@ def detail_article(request, id):
         'form': form if request.user.is_authenticated else None
     }
     return render(request, 'Article/detail_article.html', context)
+
+
+class CommentaireUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Commentaire
+    fields = ['contenu']
+    template_name = 'news/modifier_commentaire.html'
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('detail_article', kwargs={'id': self.object.article.id})
+
+    def test_func(self):
+        commentaire = self.get_object()
+        return self.request.user == commentaire.auteur
+
+
+class CommentaireDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Commentaire
+    template_name = 'news/supprimer_commentaire.html'
+
+    def get_success_url(self):
+        return reverse_lazy('detail_article', kwargs={'id': self.object.article.id})
+
+    def test_func(self):
+        commentaire = self.get_object()
+        return self.request.user == commentaire.auteur
