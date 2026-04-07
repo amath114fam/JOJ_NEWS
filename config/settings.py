@@ -126,3 +126,7 @@ STATICFILES_DIRS = [
 LOGIN_REDIRECT_URL = 'home'
 MEDIA_URL = '/media/'             # URL pour accéder aux fichiers médias
 MEDIA_ROOT = BASE_DIR / 'media'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ADMIN_EMAIL = 'admin@jojnews.com'
+DEFAULT_CHARSET = 'utf-8'

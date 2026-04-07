@@ -4,11 +4,6 @@
 <div class="text-center">
     <h1 class="text-success">Bienvenue sur JOJ News 🇸🇳</h1>
     <marquee class="lead">Plateforme officielle des Jeux Olympiques de la Jeunesse</marquee>
-
-    {% if user.is_authenticated %}
-        <p class="loginText"> Connecté en tant que <strong>{{ user.username }}</strong></p>
-    {% else %}
-        <p class="loginText">Veuillez vous connecter pour interagir</p>
-    {% endif %}
+    <h2><a class="lien" href="{% url "liste_article" %}">Cliquer ici pour voir les articles</a></h2>
 </div>
 {% endblock %}
