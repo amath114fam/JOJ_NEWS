@@ -19,6 +19,7 @@ class Article(models.Model):
     date_creation = models.DateTimeField(auto_now_add=True)
     auteur = models.ForeignKey(User, on_delete=models.CASCADE, related_name='articles')
     categorie = models.ForeignKey(Categorie, on_delete=models.SET_NULL, null=True, related_name='articles')
+    image = models.ImageField(upload_to='images/', blank=True, null=True) 
 
     def __str__(self):
         return self.titre

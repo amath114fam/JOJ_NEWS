@@ -124,3 +124,5 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static/'
 ]
 LOGIN_REDIRECT_URL = 'home'
+MEDIA_URL = '/media/'             # URL pour accéder aux fichiers médias
+MEDIA_ROOT = BASE_DIR / 'media'

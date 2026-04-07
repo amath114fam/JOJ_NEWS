@@ -8,7 +8,7 @@
         <div class="card-body">
             <h3 class="card-title text-primary">{{ details.titre }}</h3>
             <h6 class="text-muted">
-                ✍️ {{ details.auteur }} — 📅 {{ details.date_creation|date:"d/m/Y H:i" }}
+                ✍️ {{ details.auteur }} — {{ details.date_creation|date:"d/m/Y H:i" }}
             </h6>
             <hr>
             <p class="card-text">{{ details.contenu }}</p>
