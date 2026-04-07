@@ -2,7 +2,7 @@ body{
     background-color: #f8f9fa;
     background: url(/static/images/joj.png) no-repeat 50% 50%;
     background-size: cover;
-    height: 100vh;
+    height: 100%;
 }
 /* Couleurs Sénégal */
 .lead{
@@ -11,4 +11,12 @@ body{
 }
 .loginText{
     font-weight: bold;
+}
+.lien{
+    color: white;
+    text-decoration: dotted;
+}
+.imageCard{
+    height: 200px; 
+    object-fit: cover;
 }
