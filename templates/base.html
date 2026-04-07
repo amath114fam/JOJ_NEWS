@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>JOJ News</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        
+        
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+    <div class="container">
+        <a class="navbar-brand rounded-3 fw-bold p-2 bg-light text-danger" href="/">JOJ News</a>
+
+        <div>
+            {% if user.is_authenticated %}
+                <span class="text-white me-2">👤 {{ user.username }}</span>
+                <form method="POST" action="{% url 'deconnexion' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-light rounded-3 fw-bold p-2">Déconnexion</button>
+                </form>
+            {% else %}
+                <a href="{% url 'connexion' %}" class="btn btn-light  connexion rounded-3 fw-bold p-2">Connexion</a>
+                <a href="{% url 'inscription' %}" class="btn btn-dark rounded-3 fw-bold p-2">Inscription</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+<!-- CONTENU -->
+<div class="container mt-5">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>
