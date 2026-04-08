@@ -11,7 +11,10 @@
             <div class="card h-100" style="width: 100%;">
                 <img src="{{article.image.url}}" class="card-img-top imageCard" alt="{{article.image.url}}">
                 <div class="card-body">
-                    <h5 class="card-title">{{article.titre}}</h5>
+                    <h5 class="card-title">{{article.categorie}}</h5>
+                    <p>
+                         {{ article.titre }}
+                    </p>
                     <a href="{% url "detail_article" article.id %}" class="btn btn-success">Voir plus</a>
                 </div>
             </div>
