@@ -17,21 +17,25 @@
 </head>
 
 <body>
-
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
     <div class="container">
         <a class="navbar-brand rounded-3 fw-bold p-2 bg-light text-danger" href="/">JOJ News</a>
 
-        <div>
+        <div class="d-flex align-items-center">
             {% if user.is_authenticated %}
+                <ul class="navbar-nav me-3">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'liste_article' %}">Articles</a>
+                    </li>
+                </ul>
                 <span class="text-white me-2">👤 {{ user.username }}</span>
                 <form method="POST" action="{% url 'deconnexion' %}" style="display:inline;">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-light rounded-3 fw-bold p-2">Déconnexion</button>
                 </form>
             {% else %}
-                <a href="{% url 'connexion' %}" class="btn btn-light  connexion rounded-3 fw-bold p-2">Connexion</a>
+                <a href="{% url 'connexion' %}" class="btn btn-light connexion rounded-3 fw-bold p-2">Connexion</a>
                 <a href="{% url 'inscription' %}" class="btn btn-dark rounded-3 fw-bold p-2">Inscription</a>
             {% endif %}
         </div>
@@ -44,4 +48,49 @@
     {% endblock %}
 </div>
 </body>
+<!-- FOOTER -->
+<footer class="bg-dark text-white mt-5 pt-4 pb-3">
+    <div class="container">
+        <div class="row">
+
+            <!-- Logo + description -->
+            <div class="col-md-4 mb-3">
+                <h5 class="fw-bold text-danger">JOJ News</h5>
+                <p class="small">
+                    Plateforme officielle des Jeux Olympiques de la Jeunesse 🇸🇳.
+                    Suivez les dernières actualités, événements et performances des jeunes talents.
+                </p>
+            </div>
+
+            <!-- Liens rapides -->
+            <div class="col-md-4 mb-3">
+                <h6 class="fw-bold">Liens rapides</h6>
+                <ul class="list-unstyled">
+                    <li><a href="/" class="text-white text-decoration-none">Accueil</a></li>
+                    <li><a href="{% url 'liste_article' %}" class="text-white text-decoration-none">Articles</a></li>
+                    {% if not user.is_authenticated %}
+                        <li><a href="{% url 'connexion' %}" class="text-white text-decoration-none">Connexion</a></li>
+                        <li><a href="{% url 'inscription' %}" class="text-white text-decoration-none">Inscription</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="col-md-4 mb-3">
+                <h6 class="fw-bold">Contact</h6>
+                <p class="small mb-1">📍 Dakar, Sénégal</p>
+                <p class="small mb-1">📧 contact@jojnews.sn</p>
+                <p class="small">📞 +221 77 000 00 00</p>
+            </div>
+
+        </div>
+
+        <hr class="bg-light">
+
+        <!-- Bas du footer -->
+        <div class="text-center small">
+            &copy; {{ now|date:"Y" }} JOJ News - Tous droits réservés
+        </div>
+    </div>
+</footer>
 </html>
