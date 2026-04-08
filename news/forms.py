@@ -11,5 +11,4 @@ class InscriptionForm(UserCreationForm):
 class CommentaireForm(forms.ModelForm):
     class Meta:
         model = Commentaire
-        fields = ['contenu']
-        
+        fields = ['contenu']  
