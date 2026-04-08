@@ -24,18 +24,13 @@
 
         <div class="d-flex align-items-center">
             {% if user.is_authenticated %}
-                <ul class="navbar-nav me-3">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{% url 'liste_article' %}">Articles</a>
-                    </li>
-                </ul>
                 <span class="text-white me-2">👤 {{ user.username }}</span>
                 <form method="POST" action="{% url 'deconnexion' %}" style="display:inline;">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-light rounded-3 fw-bold p-2">Déconnexion</button>
                 </form>
             {% else %}
-                <a href="{% url 'connexion' %}" class="btn btn-light connexion rounded-3 fw-bold p-2">Connexion</a>
+                <a href="{% url 'connexion' %}" class="btn btn-light connexion rounded-3 fw-bold p-2 me-1">Connexion</a>
                 <a href="{% url 'inscription' %}" class="btn btn-dark rounded-3 fw-bold p-2">Inscription</a>
             {% endif %}
         </div>
@@ -47,8 +42,6 @@
     {% block content %}
     {% endblock %}
 </div>
-</body>
-<!-- FOOTER -->
 <footer class="bg-dark text-white mt-5 pt-4 pb-3">
     <div class="container">
         <div class="row">
@@ -93,4 +86,5 @@
         </div>
     </div>
 </footer>
+</body>
 </html>
