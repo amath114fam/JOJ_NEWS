@@ -13,7 +13,7 @@ def notifier_admin_nouveau_commentaire(sender, instance, created, **kwargs):
             f"Article : {instance.article.titre}\n"
             f"Auteur  : {instance.article.auteur}\n"
             f"Date    : {instance.article.date_creation}\n"
-            f"Commentaire : {instance.article.contenu}\n\n"
+            f"Commentaires : {instance.article.contenu}\n\n"
             f"Cordialement,\n"
             f"JOJ News"
         )
